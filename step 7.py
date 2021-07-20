@@ -9,7 +9,7 @@ with open('D:/VS code/opencvprojects/knownfaces/known','rb') as file:
     data=pickle.loads(file.read())  #extract all nown encodes from the file
     file.close()
 
-testimage='D:/VS code/opencvprojects/twofriendstest.jpg'   #test image to compare
+testimage='D:/VS code/opencvprojects/johntest.jpg'   #test image to compare
 testimage=face_recognition.load_image_file(testimage)   #load testimage
 testimage=cv2.cvtColor(testimage,cv2.COLOR_BGR2RGB) #convert testimage
 testimagefacelocation=face_recognition.face_locations(testimage) #testface location
@@ -29,7 +29,7 @@ for encodes,face in zip(testimagefaceencoding,testimagefacelocation):
     if result[matchindex]:
         y1,x2,y2,x1=face
         cv2.rectangle(testimage,(x1,y1),(x2,y2),(0,255,0),2)
-        cv2.putText(testimage,name[matchindex],(x1,y2+15),cv2.FONT_HERSHEY_COMPLEX_SMALL,1,(0,255,0),1)
+        cv2.putText(testimage,name[matchindex],(),cv2.FONT_HERSHEY_COMPLEX_SMALL,1,(0,255,0),1)
         print('found')
         cv2.imshow("Result image",testimage)    #Displaying the image
         cv2.waitKey(0)
